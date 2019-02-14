@@ -22,8 +22,10 @@ int main (int argc, char* argv[])
     returnval = access (filepath, F_OK);
     // Check read access ...
     readAccess = access (filepath, R_OK);
+    if (readAccess == -1) printf("\n cannot read file");
     // Check write access ...
     writeAccess = access (filepath, W_OK);
+    if (writeAccess == -1) printf("\n cannot write to file \n");
     //see if we have read write access
     if (returnval == 0) printf ("\n %s exists\n", filepath);
     else {
@@ -32,10 +34,6 @@ int main (int argc, char* argv[])
         else printf("none of the above ");
         return 0;
     }
-    
-
-    
-    
-    
+    //CONCLUSION: this file does not have read or write access
     return 0;
 }
